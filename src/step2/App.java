@@ -1,6 +1,7 @@
 package step2;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -8,8 +9,8 @@ public class App {
     public static void main(String[] args) {
         Calculator cal = new Calculator();
         Scanner sc = new Scanner(System.in);
-
         /* 반복문 시작 */
+        // TODO: 너무 while에 while 이라 오류가능성 높음. 해결해보자 + 메뉴를 만들어보는 것도 좋을 법 하다.
         while (true) {
             int num1;
             int num2;
@@ -50,18 +51,24 @@ public class App {
             int result = cal.calculate(num1, num2, operator);
             System.out.println("결과: " + result);
 
-            System.out.println("더 계산하시겠습니가? (exit 입력시 종료)");
-            String answer = sc.nextLine();
-            if (answer.equals("exit")) {
-                System.out.println("계산기를 종료합니다.");
-                break;
-            }
             // Setter 접근
             cal.setHistory(result);
+            System.out.println("연산 기록: " + cal.getHistory());
 
-            // Getter 접근
-            List<Integer> resultHistory = cal.getHistory();
-            System.out.println("이전 연산 결과: " + resultHistory);
+            // TODO: 더 계산하려고 할 때 어떤 조건을 달아서 다시 계산할 지 고민.
+            System.out.println("더 계산하시겠습니가? (exit 입력 시 종료)" + "\n(첫 연산 결과 삭제하려면 Delete를 입력하세요.)");
+            String answer = sc.nextLine();
+            if (answer.equalsIgnoreCase("exit")) {
+                System.out.println("계산기를 종료합니다.");
+                 break;
+            } else if (answer.equalsIgnoreCase("Delete")) {
+                cal.removeResult();
+                System.out.println("첫 연산 결과가 삭제되었습니다.");
+                // Getter 접근
+                List<Integer> resultHistory = cal.getHistory();
+                System.out.println("삭제 후 연산 결과: " + resultHistory);
+                break;
+            }
         }
     }
 }
