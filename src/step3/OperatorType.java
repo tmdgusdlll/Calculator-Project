@@ -22,11 +22,11 @@ public enum OperatorType {
     }
 
     // 게터
+    // TODO: 아직 개념이 완전히 내 것이 아닌듯. 추가학습 할 것(스트림, 람다, orElseThrow())
     public static OperatorType findSymbol(char operator) {
        return Arrays.stream(OperatorType.values())
                .filter(o -> o.symbol == operator)
                .findFirst()
                .orElseThrow(()-> new IllegalArgumentException("잘못된 연산자입니다."));
-       // TODO: 예외처리 해야함 (아리스메틱클래스에서)
     }
 }

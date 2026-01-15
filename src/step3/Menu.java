@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Menu {
 
     // Menu 클래스에서만 사용할 것.
-    private final Scanner sc = new Scanner(System.in);
+    private static final Scanner sc = new Scanner(System.in);
     // ArithmeticCalculator 클래스의 객체(calculator)를 생성함으로서 그 메서드를 호출할 수 있다. (calculator.메서드명())
     private final ArithmeticCalculator calculator = new ArithmeticCalculator();
 
@@ -21,7 +21,7 @@ public class Menu {
 
         // TODO: 나중에 do - while로 바꿔볼까..?
         while (true) {
-            int answer = 0;
+            int answer;
 
             try {
                 System.out.print("계산기 메뉴를 선택하시오: ");
@@ -36,7 +36,7 @@ public class Menu {
                     calculate();
                     break;
                 case 2:
-                    bringHistory();
+                    showHistory();
                     break;
                 case 3:
                     deleteFirst();
@@ -58,10 +58,10 @@ public class Menu {
     // 계산 메서드
     public void calculate() {
         while (true) {
-            double num1 = 0;
-            double num2 = 0;
+            double num1;
+            double num2;
             double result = 0;
-            char operator = 0;
+            char operator;
             while (true) {
                 try {
                     System.out.print("첫 번째 숫자를 입력하세요: ");
@@ -117,7 +117,7 @@ public class Menu {
 
     // 2번 입력시 기록 조회. (기록이 없을 때 예외처리)
     // ArithmeticCalculator 클래스의 메서드를 호출해 결과기록들을 가져온다.
-    public void bringHistory() {
+    public void showHistory() {
         if (calculator.getHistory().isEmpty()) {
             System.out.println("계산 기록이 없습니다.");
             return;
