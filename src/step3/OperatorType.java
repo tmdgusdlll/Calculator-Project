@@ -4,7 +4,7 @@ package step3;
 // enum은 new 키워드로 객체 생성할 필요 없다. -> JVM이 프로그램 시작 시 미리 다 만들어두기 때문
 
 import java.util.Arrays;
-
+// wow
 public enum OperatorType {
     // enum 상수 (enum값, enum 인스턴스) 라고 한다.. 밑의 코드들이 있으면 실행시점에 JVM이 자동으로 객체 1개씩 생성.
     PLUS('+') {

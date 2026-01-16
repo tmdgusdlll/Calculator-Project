@@ -145,3 +145,4 @@ public class Menu {
         System.out.println("기준값 보다 큰 결과값들: " + calculator.getResultsGreaterThan(threshold));
     }
 }
+// wow
